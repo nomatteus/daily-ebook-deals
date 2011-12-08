@@ -6,6 +6,10 @@ class CreateDeals < ActiveRecord::Migration
       t.float :current_price
       t.string :cover_img
       t.text :description
+
+      t.date :deal_date
+      t.string :asin
+
       t.string :link
 
       t.timestamps
