@@ -34,7 +34,8 @@ namespace :deals do
     deal[:deal_date]  = Date.today
 
     
-    d = Deal.new(deal)
+    d = Deal.find_or_create_by_asin_and_deal_date(deal[:asin], deal[:deal_date])
+    d.update_attributes(deal)
     d.save
     ap deal
 
