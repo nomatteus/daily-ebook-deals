@@ -1,4 +1,11 @@
 require 'open-uri'
+require 'amazon/ecs'
+
+Amazon::Ecs.options = {
+  :associate_tag => 'ruten-20',
+  :AWS_access_key_id => 'AKIAJTELTYBX2BD6E22A',
+  :AWS_secret_key => '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'
+}
 
 namespace :deals do
   desc "Update Kindle Daily deal"
@@ -30,13 +37,17 @@ namespace :deals do
 
     deal[:old_price]      = price_table.css('tr td')[1].content.strip!.gsub!(/\$/, "")
     deal[:current_price]  = price_table.css('tr td span b')[1].content.strip!.gsub!(/\$/, "")
-    
+        
     deal[:deal_date]  = Date.today
+
+    #res = Amazon::Ecs.item_lookup(deal[:asin])
+    #ap res
+
+    #ap item/'EditorialReview'
 
     
     d = Deal.find_or_create_by_asin_and_deal_date(deal[:asin], deal[:deal_date])
     d.update_attributes(deal)
-    d.save
     ap deal
 
   end
