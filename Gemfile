@@ -7,6 +7,7 @@ gem 'rails', '3.1.3'
 
 gem 'mysql2'
 gem 'amazon-ecs'
+gem 'pg'
 
 gem 'nokogiri'
 gem 'awesome_print'
