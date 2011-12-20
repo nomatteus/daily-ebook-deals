@@ -1,21 +1,17 @@
 
-
-
-
-
-
-<%= raw @ap1 %>
-
-
-
-
-<hr>
-<%= raw @ap2 %>
-<hr>
-
-
-
-
-
-
-<%= raw @deal %>
+<h1>Today</h1>
+<p><%= @deal_today.title %>
+<br />
+<p><%= @deal_today.old_price %>
+<br />
+<p><%= @deal_today.current_price %>
+<br />
+<p><%= @deal_today.cover_img %>
+<br />
+<p><%= @deal_today.description %>
+<br />
+<p><%= @deal_today.deal_date %>
+<br />
+<p><%= @deal_today.asin %>
+<br />
+<p><%= link_to "View on Amazon.com", @deal_today.link, {:target => "_blank"} %>
