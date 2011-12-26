@@ -31,7 +31,8 @@ namespace :deals do
     deal[:title]          = inner_doc.css('span p b a')[0].content.gsub!(/Kindle Daily Deal: /, "")
     deal[:description]    = inner_doc.css('table tr td div span')[2].content.strip!
     deal[:link]           = "http://www.amazon.com" + inner_doc.css('a')[0]['href']
-    deal[:asin]           = deal[:link].match('/dp/([a-zA-Z0-9]+)/')[1]
+    asin_match            = deal[:link].match('/dp/([a-zA-Z0-9]+)/')
+    deal[:asin]           = asin_match[1] if asin_match
 
     price_table  = inner_doc.css('table tr td div table')[1]
 
