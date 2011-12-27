@@ -12,6 +12,9 @@ gem 'pg'
 gem 'nokogiri'
 gem 'awesome_print'
 
+# mailchimp api wrapper : https://github.com/terra-firma/hominid
+gem 'hominid'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
