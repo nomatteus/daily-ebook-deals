@@ -52,5 +52,59 @@ namespace :deals do
     ap deal
 
   end
+
+  desc "Send daily email"
+  task :send_email_update => :environment do
+    h = Hominid::API.new('5d0ef767e66b59f5eeab6c8971fcade6-us4')
+
+    # Assume we are using the first (and only) list
+    list = h.lists['data'][0]
+
+    # Check to see that we have a valid deal for today, and that it hasn't been sent yet
+    todays_deal = Deal.todays_deal
+
+    if !todays_deal.nil?
+      email = Email.find_or_create_by_deal_id(todays_deal.id)
+      email.update_attributes({
+        :mc_list_id => list["id"],
+        :subject => "Daily eBook Deal for " + Date.today.strftime("%A, %B %d, %Y"),
+        :from_email => list["default_from_email"],
+        :from_name => list["default_from_name"],
+        :email_html => ActionView::Base.new(RailsVersion::Application.config.paths["app/views"].first).render(:partial => "emails/template_html", :layout => false, :locals => {:deal => todays_deal}),
+        :email_text => ActionView::Base.new(RailsVersion::Application.config.paths["app/views"].first).render(:partial => "emails/template_text", :layout => false, :locals => {:deal => todays_deal})
+      })
+      todays_deal.update_attributes(:email_id => email.id)
+      campaign = email.create_mailchimp_campaign h
+
+      ap campaign
+      #ActionView::Base.new(RailsVersion::Application.config.paths["app/views"].first).render(:partial => "emails/email_html", :layout => false, :locals => {})
+
+
+      # Create new campaign for today
+      #campaign_options = {
+      #  :list_id => list["id"],
+      #  :subject => "Daily eBook Deal for " + Date.today.strftime("%A, %B %d, %Y"),
+      #  :from_email => list["default_from_email"],
+      #  :from_name => list["default_from_name"],
+      #}
+      #campaign_content = {
+      #  :html => "<html><body>Today's deal: #{todays_deal.title}</body></html>",
+      #  :text => "Today's deal: #{todays_deal.title}"
+      #}
+      #campaign = h.campaign_create('regular', campaign_options ,campaign_content)
+      #if campaign
+      #  ap 'success'
+      #else
+      #  ap 'errors'
+      #end
+
+      # Send to list!
+      # OR - Don't actual send, but send me an email saying it's ready, and then i can approve and send it off..
+    else
+
+    end
+  end
 end
+
+
 
