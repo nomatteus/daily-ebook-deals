@@ -1,5 +1,6 @@
 RailsVersion::Application.routes.draw do
   get "deals/index"
+  get "deals/email"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

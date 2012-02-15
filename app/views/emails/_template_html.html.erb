@@ -1,25 +1,3 @@
-<h1>Today</h1>
-<p><%= deal.title %>
-<br />
-<p><%= deal.old_price %>
-<br />
-<p><%= deal.current_price %>
-<br />
-<p><%= deal.cover_img %>
-<br />
-<p><%= deal.description %>
-<br />
-<p><%= deal.deal_date %>
-<br />
-<p><%= deal.asin %>
-<br />
-<p><%= link_to "View on Amazon.com", deal.link, {:target => "_blank"} %>
-
-
-
-
-
-
 <html>
 <head>
   
@@ -58,7 +36,7 @@
             <table cellspacing="0" align="center" width="600" cellpadding="0">
               <tr>
                 <td class="main-title" style="padding: 0 20px; font-size: 28px; text-align: center; font-family: Georgia; text-transform: uppercase; letter-spacing: 6px;">
-                  <br />The Cool Collective<br />
+                  <br />Today's e-book Deal<br />
                 </td>
               </tr>
             </table>
@@ -108,54 +86,46 @@
         <tr>
           <td>
             <!-- content -->
-            <table cellspacing="0" border="0" height="870" cellpadding="0" width="600">
-              <tr>
-                <td class="article-title" height="45" valign="top" style="padding: 0 20px; font-family: Georgia; font-size: 20px; font-weight: bold;" width="600" colspan="2">
-                  <br />The first article title<br /><br />
-                </td>
-              </tr>
-              <tr>
-                <td class="content-copy" valign="top" style="padding: 0 20px; color: #000; font-size: 14px; font-family: Georgia; line-height: 20px;" colspan="2">
-                  Suspendisse imperdiet ullamcorper est at interdum. Suspendisse at felis nunc. Integer eu felis lacus, 
-                  id blandit augue. <a href="./" style="color: #cc0000; text-decoration: none;">Mauris commodo hendrerit risus</a>, quis vehicula mi adipiscing in. Integer nec pretium 
-                  odio. Sed ligula enim, scelerisque ut tempor lacinia, iaculis eget erat. Mauris commodo hendrerit risus, 
-                  quis vehicula mi adipiscing in. Integer nec <a href="./" style="color: #cc0000; text-decoration: none;">pretium</a> odio. Sed ligula enim, scelerisque ut tempor lacinia, 
-                  iaculis eget erat. Mauris commodo hendrerit risus, quis vehicula mi adipiscing in. Integer nec pretium. 
-                </td>
-              </tr>
-              <tr>
+            <table cellspacing="0" border="0" height="505" cellpadding="0" width="600">
+                          <tr>
                 <td class="image" valign="top" style="padding: 10px 20px;" colspan="2">
-                  
-                  <img src="https://s3.amazonaws.com/dailyebook/cool-collective-email-images/image1.jpg" alt="Image" style="border: 0; display: block;" />
-                  
+                  <img src="https://s3.amazonaws.com/dailyebook/cool-collective-email-images/book-image1.jpg" alt="Image" style="border: 0; display: block;" />
                 </td>
               </tr>
               <tr>
-                <td class="article-title" height="39" valign="top" style="padding: 0 20px; font-family: Georgia; font-size: 20px; font-weight: bold;" width="600" colspan="2">
-                  With a floated image
+                <td class="article-title" height="39" valign="top" style="padding: 0 40px; font-family: Georgia; font-size: 20px; font-weight: bold;" width="600" colspan="2">
+                  <%= deal.title %>
                 </td>
               </tr>
               <tr>
-                <td>
+                <td align="center">
                   <table cellspacing="0" border="0" cellpadding="0">
                     <tr>
+                      <% if !deal.cover_img.empty? %>
                       <td class="floated-image" rowspan="2" valign="top">
-                        <img src="https://s3.amazonaws.com/dailyebook/cool-collective-email-images/image2.jpg" height="199" alt="" style="border: 0;" width="181" />
+                        <a href="<%= deal.link %>" target="_blank"><img src="<%= deal.cover_img %>" alt="" style="border: 0;" /></a>
                       </td>
-                      <td class="floated-copy" valign="top" style="padding: 0 20px 0 0; color: #000; font-size: 14px; font-family: Georgia; line-height: 20px;" width="428">
-                        Suspendisse imperdiet ullamcorper est at interdum. <a href="./" style="color: #cc0000; text-decoration: none;">Suspendisse at felis nunc.</a> Integer eu felis 
-                        lacus, id blandit augue. Mauris commodo hendrerit risus, quis vehicula mi adipiscing in. Integer nec pretium 
-                        odio. Sed ligula enim, scelerisque ut tempor lacinia, iaculis eget erat. Integer eu felis lacus, id blandit 
-                        augue. Mauris commodo hendrerit risus, quis vehicula mi adipiscing in. Integer nec pretium odio. Sed ligula 
-                        enim, scelerisque ut tempor lacinia, iaculis eget erat. Integer eu felis lacus, id blandit augue. Mauris 
-                        commodo hendrerit risus, quis vehicula mi adipiscing in. Integer nec pretium odio. Sed ligula enim, scelerisque 
-                        ut tempor lacinia, iaculis eget erat. 
+                      <% end %>
+                      <td class="floated-copy" valign="top" style="padding: 0 20px 0 20px; color: #000; font-size: 14px; font-family: Georgia; line-height: 20px;" width="408">
+
+                        <p>Old Price: <strike><%= deal.old_price %></strike><br />
+                        Today's Price: $<%= deal.current_price %></p>
+                        
+                        <p><%= deal.description %></p>
+                        
+                        <p><%= deal.deal_date.strftime("%A, %b %d") %></p>
+                        
+                        <p><%= link_to "View on Amazon.com", deal.link, {:target => "_blank"} %>
+
+                        <p><small>Amazon.com ASIN: <%= deal.asin %></small></p>
                       </td>
                     </tr>
                   </table>
                 </td>
 
               </tr>
+
+
 
             </table>
             <!--  / content -->
