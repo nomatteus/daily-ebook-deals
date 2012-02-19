@@ -1,3 +1,22 @@
+<div class="span8">
+
+<!-- Begin MailChimp Signup Form -->
+
+
+<div id="mc_embed_signup">
+  <form action="http://dailyebookdeals.us4.list-manage.com/subscribe/post?u=83e4d4bee0e5dfd9191d1db75&amp;id=0d43bbd32b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" target="_blank">
+    
+    <label for="mce-EMAIL" class="control-label">Email Address</label>
+    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+    
+    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-primary">
+  </form>
+</div>
+<!--End mc_embed_signup-->
+
+
+
+<% if @deal_today %>
 
 <h1>Today</h1>
 <p><%= @deal_today.title %>
@@ -15,3 +34,8 @@
 <p><%= @deal_today.asin %>
 <br />
 <p><%= link_to "View on Amazon.com", @deal_today.link, {:target => "_blank"} %>
+<% else %>
+Sorry, there was a problem getting today's deal.
+<% end %>
+
+</div>

@@ -18,6 +18,10 @@ gem 'hominid'
 # server monitoring - avoid idling on heroku (hopefully)
 gem 'newrelic_rpm'
 
+# Use Twitter Bootstrap
+# https://github.com/thomas-mcdonald/bootstrap-sass
+gem 'bootstrap-sass'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
