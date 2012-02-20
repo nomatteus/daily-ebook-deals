@@ -5,4 +5,8 @@ class Deal < ActiveRecord::Base
   def self.todays_deal
     Deal.where(:deal_date => Date.today).first
   end
+
+  def affiliate_link
+    "http://www.amazon.com/dp/#{self.asin}/?tag=ruten-20"
+  end
 end

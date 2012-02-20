@@ -1,41 +1,46 @@
-<div class="span8">
 
-<!-- Begin MailChimp Signup Form -->
+<div id="subscribe-bar">
 
+  <h2>Get the Kindle Daily eBook deal delivered to your inbox every morning!</h2>
 
-<div id="mc_embed_signup">
-  <form action="http://dailyebookdeals.us4.list-manage.com/subscribe/post?u=83e4d4bee0e5dfd9191d1db75&amp;id=0d43bbd32b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" target="_blank">
-    
-    <label for="mce-EMAIL" class="control-label">Email Address</label>
-    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-    
-    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-primary">
-  </form>
+  <!-- Begin MailChimp Signup Form -->
+  <div id="mc_embed_signup">
+    <form action="http://dailyebookdeals.us4.list-manage.com/subscribe/post?u=83e4d4bee0e5dfd9191d1db75&amp;id=0d43bbd32b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" target="_blank">
+      
+      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
+      
+      <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-primary">
+    </form>
+  </div>
+  <!--End mc_embed_signup-->
+
 </div>
-<!--End mc_embed_signup-->
 
+<div id="deals">
+  <div id="todays-deal">
+    <% if @deal_today %>
+      <h3>Today's Deal</h3>
+      <h4><%= @deal_today.title %></h4>
 
+      <div class="cover-img">
+        <img src="<%= @deal_today.cover_img %>" />
+      </div>    
 
-<% if @deal_today %>
+      <div class="description"><%= @deal_today.description %></div>
 
-<h1>Today</h1>
-<p><%= @deal_today.title %>
-<br />
-<p><%= @deal_today.old_price %>
-<br />
-<p><%= @deal_today.current_price %>
-<br />
-<p><%= @deal_today.cover_img %>
-<br />
-<p><%= @deal_today.description %>
-<br />
-<p><%= @deal_today.deal_date %>
-<br />
-<p><%= @deal_today.asin %>
-<br />
-<p><%= link_to "View on Amazon.com", @deal_today.link, {:target => "_blank"} %>
-<% else %>
-Sorry, there was a problem getting today's deal.
-<% end %>
+      <%= link_to (raw "View on Amazon.com &raquo;"), @deal_today.affiliate_link, {:target => "_blank", :class => "btn btn-large amazon"} %>
 
+      <div class="prices">
+        <div class="old-price">
+          Old Price: <strike>$<%= @deal_today.old_price %></strike>
+        </div>
+        <div class="todays-price">
+          Today's Price: <span>$<%= @deal_today.current_price %></span>
+        </div>
+      </div>
+    <% else %>
+      Sorry, today's deal hasn't been updated yet.
+      Please enter your email above to be notified of the latest deals, or check back later.
+    <% end %>
+  </div>
 </div>

@@ -2,31 +2,111 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  background: url(/images/bg.jpg) repeat 0 0;
+}
+
+
+#header {
+  width: 940px;
+  margin: 30px auto;
+  overflow: hidden;
+  h1 {
+    font: bold 40px/50px 'Lobster', cursive, sans-serif;
+    text-shadow: #fff 1px 1px 1px;
+    float: left;
+  }
+  #share {
+    float: right;
+  }
+}
+
+#subscribe-bar {
+  background-color: rgba(64, 55, 52, 0.2);
+  padding: 25px 0;
+  text-align: center;
+  border-top: 1px solid #aca091;
+  border-bottom: 1px solid #aca091;
+  h2 {
+    margin: 10px 0 20px;
+    //font: normal 28px/28px 'Helvetica', cursive, sans-serif;
+    text-shadow: #ecdcc3 1px 1px 1px;
+  }
+  #mc_embed_signup {
+    margin: 10px 0;
+  }
+}
+
+#deals {
+  background: rgba(255, 255, 255, 1);
+  overflow: hidden;
+  #todays-deal {
+    width: 500px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    overflow: hidden;
+    .cover-img {
+      background-color: white;
+      width: 100px;
+      padding: 5px;
+      float: left;
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+    .description {
+      margin: 13px 0 13px 110px;
+    }
+    .prices {
+      margin-left: 110px;
+      .old-price {
+        
+      }
+      .todays-price {
+        font-weight: bold;
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+    a.amazon {
+      float: right;
+    }
+  } 
+}
+
+#footer {
+  background-color: rgba(255, 255, 255, 0.5);
+  font: normal 11px/40px "Open Sans", sans-serif;
+  text-align: center;
+}
 
 // Landscape phones and down
 @media (max-width: 480px) { 
   body {
-    background-color: blue;
+    
   }
 }
  
 // Landscape phone to portrait tablet
 @media (max-width: 768px) {
   body {
-    background-color: red;
+    
   }
 }
  
 // Portrait tablet to landscape and desktop
 @media (min-width: 768px) and (max-width: 980px) {
   body {
-    background-color: purple;
+    
   }
 }
  
 // Large desktop
 @media (min-width: 1200px) {
   body {
-    background-color: #fff;
+    
   }
 }
