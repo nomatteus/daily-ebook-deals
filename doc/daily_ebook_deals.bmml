@@ -1,4 +1,4 @@
-<mockup version="1.0" skin="sketch" measuredW="1154" measuredH="691" mockupW="1072" mockupH="670">
+<mockup version="1.0" skin="sketch" measuredW="1156" measuredH="691" mockupW="1074" mockupH="670">
   <controls>
     <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="82" y="21" w="1072" h="670" measuredW="450" measuredH="400" zOrder="0" locked="true" isInGroup="-1">
       <controlProperties>
@@ -79,7 +79,7 @@
         <text>Subscribe</text>
       </controlProperties>
     </control>
-    <control controlID="22" controlTypeID="com.balsamiq.mockups::Canvas" x="85" y="198" w="1069" h="117" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::Canvas" x="87" y="198" w="1069" h="117" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <borderColor>15658734</borderColor>
         <color>15658734</color>
