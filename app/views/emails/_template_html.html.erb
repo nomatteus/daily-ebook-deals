@@ -35,8 +35,8 @@
           <td valign="top">
             <table cellspacing="0" align="center" width="600" cellpadding="0">
               <tr>
-                <td class="main-title" style="padding: 0 20px; font-size: 28px; text-align: center; font-family: Georgia; text-transform: uppercase; letter-spacing: 6px;">
-                  <br />Today's eBook Deal<br />
+                <td class="main-title" style="padding: 0 20px; font-size: 28px; text-align: center; font-family: Georgia; letter-spacing: 2px;">
+                  <br />TODAY'S eBOOK DEAL<br />
                 </td>
               </tr>
             </table>
@@ -47,7 +47,7 @@
             <table cellspacing="0" align="center" width="600" cellpadding="0">
               <tr>
                 <td class="date" valign="top" style="color: #999; text-transform: uppercase; text-align: center; font-size: 11px; font-family: Verdana;">
-                  <br /><currentdayname> <currentday> <currentmonth> <currentyear><br /><br />
+                  <br /><%= deal.deal_date.strftime("%A, %B %d, %Y") %><br /><br />
                 </td>
               </tr>
             </table>
@@ -108,16 +108,22 @@
                       <% end %>
                       <td class="floated-copy" valign="top" style="padding: 0 20px 0 20px; color: #000; font-size: 14px; font-family: Georgia; line-height: 20px;" width="408">
 
-                        <p>Old Price: <strike><%= deal.old_price %></strike><br />
-                        Today's Price: $<%= deal.current_price %></p>
-                        
                         <p><%= deal.description %></p>
                         
-                        <p><%= deal.deal_date.strftime("%A, %b %d") %></p>
+                        <p>
+                          <% if deal.old_price %>
+                            Old Price: <strike><%= deal.old_price %></strike><br />
+                          <% end %>
+                          
+                          Today's Price: $<%= deal.current_price %>
+                        </p>
+                        
                         
                         <p><%= link_to "View on Amazon.com", deal.affiliate_link, {:target => "_blank"} %>
 
+                        <% if deal.asin %>
                         <p><small>Amazon.com ASIN: <%= deal.asin %></small></p>
+                        <% end %>
                       </td>
                     </tr>
                   </table>

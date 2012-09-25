@@ -9,4 +9,9 @@ class DealsController < ApplicationController
     todays_deal = Deal.todays_deal
     render(:partial => "emails/template_html", :layout => false, :locals => {:deal => todays_deal})
   end
+
+  def email_txt
+    todays_deal = Deal.todays_deal
+    render(:partial => "emails/template_text", :layout => false, :locals => {:deal => todays_deal})
+  end
 end

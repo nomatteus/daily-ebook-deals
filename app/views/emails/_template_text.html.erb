@@ -2,13 +2,15 @@ Today's eBook Deal
 
 Title: <%= deal.title %>
 
-Old Price: <%= deal.old_price %>
-
-Today's Price: <%= deal.current_price %>
-
 Description:
 
 <%= deal.description %>
+
+<% if deal.old_price %>
+Old Price: <%= deal.old_price %>
+<% end %>
+
+Today's Price: <%= deal.current_price %>
 
 View on Amazon.com:
 <%= deal.affiliate_link %>

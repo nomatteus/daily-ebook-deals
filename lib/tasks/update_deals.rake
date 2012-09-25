@@ -37,7 +37,10 @@ namespace :deals do
 
     price_table  = inner_doc.css('table tr td div table')[1]
 
-    deal[:old_price]      = price_table.css('tr td')[1].content.strip!.gsub!(/\$/, "")
+    # Sometimes there is no old price, i.e. for when there is more than one deal (there will also be no ASIN for these)
+    if price_table.css('tr td')[1].content.match('/\$[0-9.]+/')
+      deal[:old_price]      = price_table.css('tr td')[1].content.strip!.gsub!(/\$/, "")
+    end
     deal[:current_price]  = price_table.css('tr td span b')[1].content.strip!.gsub!(/\$/, "")
         
     deal[:deal_date]  = Date.today

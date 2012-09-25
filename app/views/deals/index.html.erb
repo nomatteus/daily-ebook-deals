@@ -31,9 +31,11 @@
       <%= link_to (raw "View on Amazon.com &raquo;"), @deal_today.affiliate_link, {:target => "_blank", :class => "btn btn-large amazon"} %>
 
       <div class="prices">
+        <% if @deal_today.old_price %>
         <div class="old-price">
           Old Price: <strike>$<%= @deal_today.old_price %></strike>
         </div>
+        <% end %>
         <div class="todays-price">
           Today's Price: <span>$<%= @deal_today.current_price %></span>
         </div>
