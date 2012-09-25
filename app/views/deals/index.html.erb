@@ -23,7 +23,7 @@
       <h4><%= @deal_today.title %></h4>
 
       <div class="cover-img">
-        <img src="<%= @deal_today.cover_img %>" />
+        <a href="<%= @deal_today.affiliate_link %>" target="_blank"><img src="<%= @deal_today.cover_img %>" /></a>
       </div>    
 
       <div class="description"><%= @deal_today.description %></div>
