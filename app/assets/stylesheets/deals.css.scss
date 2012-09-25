@@ -19,6 +19,19 @@ body {
   }
   #share {
     float: right;
+    position: relative;
+    width: 215px;
+    margin-top: 15px;
+    .fb-like {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .twitter-share-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 }
 
@@ -28,6 +41,13 @@ body {
   text-align: center;
   border-top: 1px solid #aca091;
   border-bottom: 1px solid #aca091;
+  background: -moz-linear-gradient(top, rgba(102,95,87,0.35) 0%, rgba(168,157,144,0.34) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(102,95,87,0.35)), color-stop(100%,rgba(168,157,144,0.34))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(102,95,87,0.35) 0%,rgba(168,157,144,0.34) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(102,95,87,0.35) 0%,rgba(168,157,144,0.34) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(102,95,87,0.35) 0%,rgba(168,157,144,0.34) 100%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(102,95,87,0.35) 0%,rgba(168,157,144,0.34) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#59665f57', endColorstr='#57a89d90',GradientType=0 ); /* IE6-9 */
   h2 {
     margin: 10px 0 20px;
     //font: normal 28px/28px 'Helvetica', cursive, sans-serif;
@@ -86,9 +106,18 @@ body {
 }
 
 // Landscape phones and down
-@media (max-width: 481px) { 
+@media (max-width: 490px) { 
   #mce-EMAIL, #mc-embedded-subscribe {
     margin-top: 15px;
+  }
+  #header {
+    h1 {
+      float: none;
+      text-align: center;
+    }
+    #share {
+      display: none;
+    }
   }
   #subscribe-bar {
     padding-top: 10px;
