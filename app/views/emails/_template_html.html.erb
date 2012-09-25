@@ -115,7 +115,7 @@
                         
                         <p><%= deal.deal_date.strftime("%A, %b %d") %></p>
                         
-                        <p><%= link_to "View on Amazon.com", deal.link, {:target => "_blank"} %>
+                        <p><%= link_to "View on Amazon.com", deal.affiliate_link, {:target => "_blank"} %>
 
                         <p><small>Amazon.com ASIN: <%= deal.asin %></small></p>
                       </td>

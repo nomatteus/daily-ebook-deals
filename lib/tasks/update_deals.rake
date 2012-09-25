@@ -31,8 +31,9 @@ namespace :deals do
     deal[:title]          = inner_doc.css('span p b a')[0].content.gsub!(/Kindle Daily Deal: /, "")
     deal[:description]    = inner_doc.css('table tr td div span')[2].content.strip!
     deal[:link]           = "http://www.amazon.com" + inner_doc.css('a')[0]['href']
-    asin_match            = deal[:link].match('/dp/([a-zA-Z0-9]+)/')
-    deal[:asin]           = asin_match[1] if asin_match
+    # Different formats from http://en.wikipedia.org/wiki/Amazon_Standard_Identification_Number
+    asin_match            = deal[:link].match('/(dp|gp/product|o|dp/product)/([a-zA-Z0-9]+)/')
+    deal[:asin]           = asin_match[2] if asin_match
 
     price_table  = inner_doc.css('table tr td div table')[1]
 
@@ -76,35 +77,16 @@ namespace :deals do
       todays_deal.update_attributes(:email_id => email.id)
       campaign = email.create_mailchimp_campaign h
 
-      ap campaign
-      #ActionView::Base.new(RailsVersion::Application.config.paths["app/views"].first).render(:partial => "emails/email_html", :layout => false, :locals => {})
-
-
-      # Create new campaign for today
-      #campaign_options = {
-      #  :list_id => list["id"],
-      #  :subject => "Daily eBook Deal for " + Date.today.strftime("%A, %B %d, %Y"),
-      #  :from_email => list["default_from_email"],
-      #  :from_name => list["default_from_name"],
-      #}
-      #campaign_content = {
-      #  :html => "<html><body>Today's deal: #{todays_deal.title}</body></html>",
-      #  :text => "Today's deal: #{todays_deal.title}"
-      #}
-      #campaign = h.campaign_create('regular', campaign_options ,campaign_content)
-      #if campaign
-      #  ap 'success'
-      #else
-      #  ap 'errors'
-      #end
+      # ap campaign
 
       # Send to list!
-      # OR - Don't actual send, but send me an email saying it's ready, and then i can approve and send it off..
+      email.send_mailchimp_campaign h unless email.sent == 1
     else
-
+      raise TodaysDealNotExistException, "There isn't a deal yet for day. Maybe run `rake deals:update` and try again!"
     end
   end
 end
 
-
+class TodaysDealNotExistException < Exception
+end
 
