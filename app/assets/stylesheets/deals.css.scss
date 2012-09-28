@@ -6,7 +6,6 @@ body {
   background: url(/images/bg.jpg) repeat 0 0;
 }
 
-
 #header {
   max-width: 940px;
   margin: 30px auto;
@@ -41,20 +40,43 @@ body {
   text-align: center;
   border-top: 1px solid #aca091;
   border-bottom: 1px solid #aca091;
-  background: -moz-linear-gradient(top, rgba(102,95,87,0.35) 0%, rgba(168,157,144,0.34) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(102,95,87,0.35)), color-stop(100%,rgba(168,157,144,0.34))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, rgba(102,95,87,0.35) 0%,rgba(168,157,144,0.34) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, rgba(102,95,87,0.35) 0%,rgba(168,157,144,0.34) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, rgba(102,95,87,0.35) 0%,rgba(168,157,144,0.34) 100%); /* IE10+ */
-  background: linear-gradient(to bottom, rgba(102,95,87,0.35) 0%,rgba(168,157,144,0.34) 100%); /* W3C */
+  background: -moz-linear-gradient(top, rgba(102,95,87,0.40) 0%, rgba(168,157,144,0.30) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(102,95,87,0.30)), color-stop(100%,rgba(168,157,144,0.30))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(102,95,87,0.40) 0%,rgba(168,157,144,0.30) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(102,95,87,0.40) 0%,rgba(168,157,144,0.30) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(102,95,87,0.40) 0%,rgba(168,157,144,0.30) 100%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(102,95,87,0.40) 0%,rgba(168,157,144,0.30) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#59665f57', endColorstr='#57a89d90',GradientType=0 ); /* IE6-9 */
   h2 {
     margin: 10px 0 20px;
     //font: normal 28px/28px 'Helvetica', cursive, sans-serif;
     text-shadow: #ecdcc3 1px 1px 1px;
   }
-  #mc_embed_signup {
+  .control-group {
     margin: 10px 0;
+    position: relative;
+    .message {
+      margin: 5px auto;
+      max-width: 320px;
+    }
+    .errors {
+      color: #B94A48;
+      text-shadow: #ECDCC3 1px 1px 1px;
+    }
+    .success {
+    }
+    #loading-indicator {
+      display: none;
+      background: rgba(0, 0, 0, 0.4) url(/images/ajax-loader.gif) no-repeat center center;
+      max-width: 304px;
+      height: 28px;
+      margin: 0 auto;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -152px;
+      border-radius: 3px;
+    }
   }
 }
 
@@ -122,6 +144,12 @@ body {
   #subscribe-bar {
     padding-top: 10px;
     padding-bottom: 10px;
+    .control-group {
+      input {
+        display: block;
+        margin: 10px auto;
+      }
+    }
   }
   #deals {
     #todays-deal {

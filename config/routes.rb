@@ -3,6 +3,8 @@ RailsVersion::Application.routes.draw do
   get "deals/email"       # HTML Email Preview
   get "deals/email_txt"   # Text Email Preview
 
+  post "email/subscribe"   # Text Email Preview
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

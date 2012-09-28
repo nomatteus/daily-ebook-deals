@@ -3,16 +3,19 @@
 
   <h2>Get the Kindle Daily eBook deal delivered to your inbox every morning!</h2>
 
-  <!-- Begin MailChimp Signup Form -->
-  <div id="mc_embed_signup">
-    <form action="http://dailyebookdeals.us4.list-manage.com/subscribe/post?u=83e4d4bee0e5dfd9191d1db75&amp;id=0d43bbd32b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form-inline" target="_blank">
+  <div id="embed_signup" class="control-group">
+    <form action="<%= url_for :controller => "email", :action => "subscribe" %>" method="post" id="subscribe-form" class="validate form-inline" target="_blank">
       
-      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
+      <div id="loading-indicator"></div>
+
+      <div class="message errors"></div>
+      <div class="message success"></div>
       
-      <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn btn-primary">
+      <input type="email" value="" name="email" class="required email input-large" id="email" placeholder="Email Address">
+      
+      <input type="submit" value="Subscribe" name="subscribe" id="subscribe" class="button btn btn-primary">
     </form>
   </div>
-  <!--End mc_embed_signup-->
 
 </div>
 
