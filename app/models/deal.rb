@@ -7,10 +7,12 @@ class Deal < ActiveRecord::Base
   end
 
   def affiliate_link
+    # Oct 30, 2012: Removing tag from URL because it's causing 404s for some reason
+    # Don't want to spend much time looking into this right now, so this is the quick fix
     if self.asin.blank?
-      self.link + "&tag=ruten-20"
+      self.link# + "&tag=ruten-20"
     else
-      "http://www.amazon.com/dp/#{self.asin}/?tag=ruten-20"
+      "http://www.amazon.com/dp/#{self.asin}/" # ?tag=ruten-20"
     end
   end
 end
