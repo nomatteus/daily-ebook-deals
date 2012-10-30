@@ -30,7 +30,7 @@ group :assets do
   gem 'uglifier', '>= 1.2.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.0.3'
 
 gem 'airbrake'
 
