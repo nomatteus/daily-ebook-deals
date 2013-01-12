@@ -11,7 +11,7 @@ class EmailController < ApplicationController
 
   # Handles an AJAX subscribe request
   def subscribe
-    h = Hominid::API.new(RailsVersion.config.mailchimp_api_key)
+    h = Hominid::API.new(ENV['mailchimp_api_key'])
 
     email = params[:email]
 
