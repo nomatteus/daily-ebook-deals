@@ -2,9 +2,9 @@ require 'open-uri'
 require 'amazon/ecs'
 
 Amazon::Ecs.options = {
-  :associate_tag => 'ruten-20',
-  :AWS_access_key_id => 'AKIAJTELTYBX2BD6E22A',
-  :AWS_secret_key => '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'
+  :associate_tag => RailsVersion.config.amazon_associate_tag,
+  :AWS_access_key_id => RailsVersion.config.amazon_aws_access_key_id,
+  :AWS_secret_key => RailsVersion.config.amazon_aws_secret_key
 }
 
 namespace :deals do
@@ -59,7 +59,8 @@ namespace :deals do
 
   desc "Send daily email"
   task :send_email_update => :environment do
-    h = Hominid::API.new('5d0ef767e66b59f5eeab6c8971fcade6-us4')
+    h = Hominid::API.new(RailsVersion.config.mailchimp_api_key)
+
 
     # Assume we are using the first (and only) list
     list = h.lists['data'][0]
