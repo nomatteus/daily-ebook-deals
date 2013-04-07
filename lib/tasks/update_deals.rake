@@ -17,7 +17,7 @@ namespace :deals do
     
     deal_html = ""
     
-    doc.css('td .amabot_center > table:first').each do |table|
+    doc.css('td.amabot_center table:first').each do |table|
       deal_html += table.to_s
     end
 
@@ -27,29 +27,16 @@ namespace :deals do
     #puts inner_doc.inspect
 
     deal = {}
-    deal[:cover_img]      = inner_doc.css('span a img')[0]['src']
-    deal[:title]          = inner_doc.css('span p b a')[0].content.gsub!(/Kindle Daily Deal: /, "")
-    deal[:description]    = inner_doc.css('table tr td div span')[2].content.strip!
+    deal[:cover_img]      = inner_doc.css('a img')[0]['src']
+    deal[:title]          = inner_doc.css('b')[0].content.gsub!(/Kindle Daily Deal: /, "")
+    deal[:description]    = inner_doc.css('td')[4].content.strip!.split("\n")[0]
     deal[:link]           = "http://www.amazon.com" + inner_doc.css('a')[0]['href']
     # Different formats from http://en.wikipedia.org/wiki/Amazon_Standard_Identification_Number
-    asin_match            = deal[:link].match('/(dp|gp/product|o|dp/product)/([a-zA-Z0-9]+)/')
+    asin_match            = deal[:link].match('/(dp|gp/product|o|dp/product)/([a-zA-Z0-9]+)')
     deal[:asin]           = asin_match[2] if asin_match
-
-    price_table  = inner_doc.css('table tr td div table')[1]
-
-    # Sometimes there is no old price, i.e. for when there is more than one deal (there will also be no ASIN for these)
-    if price_table.css('tr td')[1].content.match('/\$[0-9.]+/')
-      deal[:old_price]      = price_table.css('tr td')[1].content.strip!.gsub!(/\$/, "")
-    end
-    deal[:current_price]  = price_table.css('tr td span b')[1].content.strip!.gsub!(/\$/, "")
-        
+    deal[:current_price]  = inner_doc.css('.price')[0].content.gsub!(/\$/, "")
     deal[:deal_date]  = Date.today
-
     #res = Amazon::Ecs.item_lookup(deal[:asin])
-    #ap res
-
-    #ap item/'EditorialReview'
-
     
     d = Deal.find_or_create_by_asin_and_deal_date(deal[:asin], deal[:deal_date])
     d.update_attributes(deal)

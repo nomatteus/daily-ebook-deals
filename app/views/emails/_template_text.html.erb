@@ -1,6 +1,6 @@
 Today's eBook Deal
 
-Title: <%= deal.title %>
+<% if deal.title.present? %><%= deal.title %><% end %>
 
 Description:
 
@@ -14,3 +14,6 @@ Today's Price: <%= deal.current_price %>
 
 View on Amazon.com:
 <%= deal.affiliate_link %>
+
+View all Kindle Daily Deals:
+http://www.amazon.com/gp/feature.html?ie=UTF8&docId=1000677541&tag=ruten-20

@@ -12,7 +12,7 @@ class Deal < ActiveRecord::Base
     if self.asin.blank?
       self.link# + "&tag=ruten-20"
     else
-      "http://www.amazon.com/dp/#{self.asin}/" # ?tag=ruten-20"
+      "http://www.amazon.com/dp/#{self.asin}/?tag=ruten-20"
     end
   end
 end
