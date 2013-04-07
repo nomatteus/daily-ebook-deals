@@ -13,7 +13,7 @@ Old Price: <%= deal.old_price %>
 Today's Price: <%= deal.current_price %>
 
 View on Amazon.com:
-<%= deal.affiliate_link %>
+<%= deal.affiliate_link.html_safe %>
 
 View all Kindle Daily Deals:
-http://www.amazon.com/gp/feature.html?ie=UTF8&docId=1000677541&tag=ruten-20
+<%= Deal.all_deals_link.html_safe %>

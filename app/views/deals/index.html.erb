@@ -42,10 +42,14 @@
         </div>
       </div>
 
-      <%= link_to (raw "View on Amazon.com &raquo;"), @deal_today.affiliate_link, {:target => "_blank", :class => "btn amazon"} %>
+      <%= link_to (raw "View This Deal on Amazon.com &raquo;"), @deal_today.affiliate_link, {:target => "_blank", :class => "btn btn-primary amazon"} %>
+      <%= link_to (raw "View All Kindle Daily Deals &raquo;"), Deal.all_deals_link, {:target => "_blank", :class => "btn"} %>
     <% else %>
       Sorry, today's deal hasn't been updated yet.
       Please enter your email above to be notified of the latest deals, or check back later.
     <% end %>
+
+    <div class="all-deals">
+    </div>
   </div>
 </div>
