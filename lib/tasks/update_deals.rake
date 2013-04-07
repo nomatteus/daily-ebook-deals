@@ -34,7 +34,7 @@ namespace :deals do
     # Different formats from http://en.wikipedia.org/wiki/Amazon_Standard_Identification_Number
     asin_match            = deal[:link].match('/(dp|gp/product|o|dp/product)/([a-zA-Z0-9]+)')
     deal[:asin]           = asin_match[2] if asin_match
-    deal[:current_price]  = inner_doc.css('.price')[0].content.gsub!(/\$/, "")
+    deal[:current_price]  = inner_doc.css('p b')[0].content.match("[0-9\.]+")[0]
     deal[:deal_date]  = Date.today
     #res = Amazon::Ecs.item_lookup(deal[:asin])
     
